@@ -1,0 +1,11 @@
+[FORMAT]
+max-line-length=120
+
+[BASIC]
+good-names=
+    _,
+    i,
+    j,
+    k,
+    df,
+    n,

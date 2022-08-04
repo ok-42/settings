@@ -1,0 +1,22 @@
+{
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  },
+  "keys": {
+    "command": {
+      "bind": {
+        "q,0": "jupyter-notebook:restart-kernel-and-clear-output",
+        "q,r": "jupyter-notebook:restart-kernel",
+        "ctrl-down": "jupyter-notebook:move-cell-down",
+        "ctrl-up": "jupyter-notebook:move-cell-up",
+        "shift-z,c": "jupyter-notebook:clear-cell-output",
+        "q,a": "jupyter-notebook:confirm-restart-kernel-and-run-all-cells"
+      },
+      "unbind": [
+        "q"
+      ]
+    }
+  }
+}
