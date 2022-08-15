@@ -1,4 +1,4 @@
-bash wget_git_prompt.sh
+wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 export OLD_FILES_PATH=~/old_files
 mkdir $OLD_FILES_PATH
 [ ! -f ~/.bashrc ] || mv ~/.bashrc $OLD_FILES_PATH
