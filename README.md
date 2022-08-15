@@ -3,20 +3,13 @@
 
 ## Installation
 
-Clone the project and download a file from git project.
+Clone the project and execute the installation script. It makes a copy of your original `.bashrc` and `.gitconfig` 
+files that will be replaced with the local ones. You can find them in `~/old_files` (if necessary, set another name).
 
 ```bash
 git clone git@github.com:ok-42/settings.git
 cd settings/
-bash wget_git_prompt.sh
-```
-
-Make a copy of your original `.bashrc` file that will be replaced with the local [`.bashrc`](.bashrc) file.
-
-```bash
-mv ~/.bashrc ~/old_bashrc.sh
-cp .bashrc ~/.bashrc
-source .bashrc
+bash setup.sh
 ```
 
 
