@@ -26,16 +26,17 @@ alias cc='pygmentize -g -O style=colorful,linenos=1'
 if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
+    alias a='source venv/bin/activate'
 else
     alias python='winpty python.exe'
     alias open='explorer .'
+    alias a='source venv/Scripts/activate'
 fi
 
 alias jn='source $MY_SETTINGS_PATH/run_jupyter.sh'
 alias pi='pip install'
 alias pu='python -m pip install --upgrade pip'
 
-alias a='source venv/Scripts/activate'
 alias da='deactivate'
 
 alias v='vim $MY_BASHRC_PATH'
