@@ -12,6 +12,7 @@ alias gp='git pull'
 alias gr='git reset --hard'
 alias gs='git status'
 alias cb='git rev-parse --abbrev-ref HEAD'
+alias rs='git remote show origin'
 
 export MY_PROJECTS_PATH=~/projects
 export MY_SETTINGS_PATH="$MY_PROJECTS_PATH"/settings
