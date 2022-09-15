@@ -90,6 +90,10 @@ function find_project_root() {
   echo "$LOCAL_PATH";
 }
 
+function ch() {
+  git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
+}
+
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
