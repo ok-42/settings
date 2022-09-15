@@ -65,6 +65,21 @@ function new() {
   fi
 }
 
+# Looks for venv directory in the current directory and goes up until venv is found or root reached
+# If the virtual environment found, activates it
+function activate_venv() {
+  LOCAL_PATH=$(pwd);
+  until [[ -d $LOCAL_PATH/venv || "$LOCAL_PATH" == "/" ]]; do
+    LOCAL_PATH=$(dirname "$LOCAL_PATH");
+  done;
+  if [ -d "$LOCAL_PATH"/venv ]; then
+    echo Virual environment found in "$LOCAL_PATH";
+    source "$LOCAL_PATH"/venv/bin/activate;
+  else
+    echo Virual environment not found;
+  fi
+}
+
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
