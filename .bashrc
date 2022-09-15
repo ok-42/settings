@@ -21,6 +21,9 @@ export MY_BASHRC_PATH="$MY_SETTINGS_PATH"/.bashrc
 alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
 
+# https://stackoverflow.com/a/33469402
+alias path='echo "$PATH" | tr ":" "\n"'
+
 #https://stackoverflow.com/a/14799752
 alias cc='pygmentize -g -O style=colorful,linenos=1'
 
