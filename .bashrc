@@ -80,6 +80,16 @@ function activate_venv() {
   fi
 }
 
+# Prints project root (for me, it's a directory in ~/projects)
+function find_project_root() {
+  LOCAL_PATH=$(pwd);
+  # Note that dirname prints path without trailing slash
+  until [[ $(dirname "$LOCAL_PATH") == "$MY_PROJECTS_PATH" || "$LOCAL_PATH" == "/" ]]; do
+    LOCAL_PATH=$(dirname "$LOCAL_PATH");
+  done;
+  echo "$LOCAL_PATH";
+}
+
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
