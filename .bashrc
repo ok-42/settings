@@ -95,6 +95,13 @@ function ch() {
   git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
 
+function chh() {
+  FILE_NAME=$(date +%s).txt
+  ch > "$FILE_NAME"
+  python stats.py "$FILE_NAME"
+  rm "$FILE_NAME"
+}
+
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
