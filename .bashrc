@@ -24,8 +24,9 @@ alias cls='clear'
 # https://stackoverflow.com/a/33469402
 alias path='echo "$PATH" | tr ":" "\n"'
 
-#https://stackoverflow.com/a/14799752
-alias cc='pygmentize -g -O style=colorful,linenos=1'
+# https://stackoverflow.com/a/14799752
+alias ccc='pygmentize -g -O style=colorful,linenos=1'
+alias cc='highlight --out-format=xterm256 --line-numbers'
 
 if [ "$(uname -s)" == "Linux" ];
 then
