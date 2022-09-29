@@ -62,7 +62,7 @@ function new() {
   else
     mkdir "$1"
     cd "$1" || return
-    bash "$MY_PROJECTS_PATH"/settings/setup_project.sh
+    bash -i "$MY_PROJECTS_PATH"/settings/setup_project.sh
   fi
 }
 
