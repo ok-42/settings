@@ -106,3 +106,5 @@ function chh() {
 source ~/git-prompt.sh
 
 PS1='\012\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
+
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
