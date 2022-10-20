@@ -32,10 +32,10 @@ if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
     function a() {
-        source venv/bin/activate
+        activate_venv
         PROJECT_PATH=$(dirname $VIRTUAL_ENV)
         PROJECT_NAME=${PROJECT_PATH##*/}
-        export PS1="($PROJECT_NAME) $ORIG_PS1"
+        export PS1="\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
     }
     alias t="tree -I 'venv|__pycache__'"
 else
