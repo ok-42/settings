@@ -31,7 +31,12 @@ alias cc='highlight --out-format=xterm256 --line-numbers'
 if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
-    alias a='source venv/bin/activate'
+    function a() {
+        source venv/bin/activate
+        PROJECT_PATH=$(dirname $VIRTUAL_ENV)
+        PROJECT_NAME=${PROJECT_PATH##*/}
+        export PS1="($PROJECT_NAME) $ORIG_PS1"
+    }
     alias t="tree -I 'venv|__pycache__'"
 else
     alias python='winpty python.exe'
@@ -105,6 +110,7 @@ function chh() {
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
-PS1='\012\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
+export ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
+PS1='\012'$ORIG_PS1
 
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
