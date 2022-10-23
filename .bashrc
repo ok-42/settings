@@ -103,7 +103,7 @@ function ch() {
 function chh() {
   FILE_NAME=$(date +%s).txt
   ch > "$FILE_NAME"
-  python stats.py "$FILE_NAME"
+  python "$MY_SETTINGS_PATH"/stats.py "$FILE_NAME"
   rm "$FILE_NAME"
 }
 
