@@ -31,23 +31,24 @@ alias cc='highlight --out-format=xterm256 --line-numbers'
 if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
-    function a() {
-        activate_venv
-        PROJECT_PATH=$(dirname $VIRTUAL_ENV)
-        PROJECT_NAME=${PROJECT_PATH##*/}
-        export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
-    }
+    alias source_activate='source "$LOCAL_PATH"/venv/bin/activate'
     alias t="tree -I 'venv|__pycache__'"
 else
     alias python='winpty python.exe'
     alias open='explorer .'
-    alias a='source venv/Scripts/activate'
+    alias source_activate='source "$LOCAL_PATH"/venv/Scripts/activate'
 fi
 
 alias jn='source $MY_SETTINGS_PATH/run_jupyter.sh'
 alias pi='pip install'
 alias pu='python -m pip install --upgrade pip'
 
+function a() {
+    activate_venv
+    PROJECT_PATH=$(dirname $VIRTUAL_ENV)
+    PROJECT_NAME=${PROJECT_PATH##*/}
+    export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
+}
 alias da='deactivate'
 
 alias v='vim $MY_BASHRC_PATH'
@@ -80,7 +81,7 @@ function activate_venv() {
   done;
   if [ -d "$LOCAL_PATH"/venv ]; then
     echo Virual environment found in "$LOCAL_PATH";
-    source "$LOCAL_PATH"/venv/bin/activate;
+		source_activate;
   else
     echo Virual environment not found;
   fi
