@@ -45,6 +45,9 @@ alias pu='python -m pip install --upgrade pip'
 
 function a() {
     activate_venv
+    if [ -z "$VIRTUAL_ENV" ]; then
+        return
+    fi
     PROJECT_PATH=$(dirname $VIRTUAL_ENV)
     PROJECT_NAME=${PROJECT_PATH##*/}
     export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
