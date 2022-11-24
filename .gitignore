@@ -1,1 +1,4 @@
 .idea/
+
+# https://github.com/ok-42/pycharm-scp
+/pcscp.json
