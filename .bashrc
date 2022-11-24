@@ -49,7 +49,7 @@ function a() {
         return
     fi
     PROJECT_PATH=$(dirname $VIRTUAL_ENV)
-    PROJECT_NAME=${PROJECT_PATH##*/}
+    PROJECT_NAME=$(basename $PROJECT_PATH)
     export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
 }
 alias da='deactivate'
