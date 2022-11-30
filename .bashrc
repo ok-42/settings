@@ -36,6 +36,7 @@ then
 else
     alias python='winpty python.exe'
     alias open='explorer .'
+    alias note='start notepad++'
     alias source_activate='source "$LOCAL_PATH"/venv/Scripts/activate'
 fi
 
