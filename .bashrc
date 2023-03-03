@@ -2,11 +2,13 @@ alias ll='ls -al --color --group-directories-first'
 
 alias ga='git add'
 alias gb='git branch'
+alias gbl='git branch --list'
 alias gc='git commit'
 alias gco='git checkout'
 alias gd='git diff'
 alias gdi='git diff --ignore-space-change'
 alias gdt='git difftool'
+alias gf='git fetch'
 alias gg='git lg'
 alias gl='git log -1'
 alias gp='git pull'
@@ -119,3 +121,7 @@ export ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(_
 PS1='\012'$ORIG_PS1
 
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+if [ -f ~/.git-completion.bash ];
+	then source ~/.git-completion.bash
+fi
