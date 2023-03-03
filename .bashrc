@@ -66,40 +66,39 @@ function s() {
 }
 
 function new() {
-  if [[ -f $1 || -d $1 ]];
-  then
-    echo Project "$1" already exists
-    return
-  else
-    mkdir "$1"
-    cd "$1" || return
-    bash -i "$MY_PROJECTS_PATH"/settings/setup_project.sh
-  fi
+    if [[ -f $1 || -d $1 ]]; then
+        echo Project "$1" already exists
+        return
+    else
+        mkdir "$1"
+        cd "$1" || return
+        bash -i "$MY_PROJECTS_PATH"/settings/setup_project.sh
+    fi
 }
 
 # Looks for venv directory in the current directory and goes up until venv is found or root reached
 # If the virtual environment found, activates it
 function activate_venv() {
-  LOCAL_PATH=$(pwd);
-  until [[ -d $LOCAL_PATH/venv || "$LOCAL_PATH" == "/" ]]; do
-    LOCAL_PATH=$(dirname "$LOCAL_PATH");
-  done;
-  if [ -d "$LOCAL_PATH"/venv ]; then
-    echo Virual environment found in "$LOCAL_PATH";
-		source_activate;
-  else
-    echo Virual environment not found;
-  fi
+    LOCAL_PATH=$(pwd);
+    until [[ -d $LOCAL_PATH/venv || "$LOCAL_PATH" == "/" ]]; do
+        LOCAL_PATH=$(dirname "$LOCAL_PATH")
+    done
+    if [ -d "$LOCAL_PATH"/venv ]; then
+        echo Virual environment found in "$LOCAL_PATH"
+        source_activate
+    else
+        echo Virual environment not found
+    fi
 }
 
 # Prints project root (for me, it's a directory in ~/projects)
 function find_project_root() {
-  LOCAL_PATH=$(pwd);
-  # Note that dirname prints path without trailing slash
-  until [[ $(dirname "$LOCAL_PATH") == "$MY_PROJECTS_PATH" || "$LOCAL_PATH" == "/" ]]; do
-    LOCAL_PATH=$(dirname "$LOCAL_PATH");
-  done;
-  echo "$LOCAL_PATH";
+    LOCAL_PATH=$(pwd)
+    # Note that dirname prints path without trailing slash
+    until [[ $(dirname "$LOCAL_PATH") == "$MY_PROJECTS_PATH" || "$LOCAL_PATH" == "/" ]]; do
+        LOCAL_PATH=$(dirname "$LOCAL_PATH")
+    done
+    echo "$LOCAL_PATH"
 }
 
 function ch() {
