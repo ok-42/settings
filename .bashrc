@@ -52,8 +52,8 @@ function a() {
     if [ -z "$VIRTUAL_ENV" ]; then
         return
     fi
-    PROJECT_PATH=$(dirname $VIRTUAL_ENV)
-    PROJECT_NAME=$(basename $PROJECT_PATH)
+    PROJECT_PATH=$(dirname "$VIRTUAL_ENV")
+    PROJECT_NAME=$(basename "$PROJECT_PATH")
     export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
 }
 alias da='deactivate'
@@ -117,11 +117,14 @@ function chh() {
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
-export ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
+# shellcheck disable=SC2016
+ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
 PS1='\012'$ORIG_PS1
 
+# shellcheck disable=SC1090
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
+# shellcheck disable=SC1090
 if [ -f ~/.git-completion.bash ];
 	then source ~/.git-completion.bash
 fi
