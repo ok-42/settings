@@ -9,3 +9,10 @@ good-names=
     k,
     df,
     n,
+
+[MESSAGES CONTROL]
+disable=
+    logging-fstring-interpolation,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
