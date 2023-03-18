@@ -47,15 +47,16 @@ alias jn='source $MY_SETTINGS_PATH/run_jupyter.sh'
 alias pi='pip install'
 alias pu='python -m pip install --upgrade pip'
 
+RED='\e[31m'
+BLUE='\e[1;34m'
+RESET_COLOUR='\033[0m'
+
 # Activate the virtual environment for the current project and update the shell prompt to include the project name.
 # This function first locates the project root directory, then checks for a virtual environment in that directory. If
 # a virtual environment is found, it is activated, and the shell prompt is updated to include the name of the current
 # project. Otherwise, an error message is displayed. This function should be run from within the project directory.
 function a() {
     LOCAL_PATH=$(find_project_root)
-    RED='\e[31m'
-    BLUE='\e[1;34m'
-    RESET_COLOUR='\033[0m'
     if [ -d "$LOCAL_PATH"/venv ]; then
         echo -e "Virtual environment found in ${BLUE}$LOCAL_PATH${RESET_COLOUR}"
         source_activate
@@ -96,6 +97,17 @@ function find_project_root() {
         LOCAL_PATH=$(dirname "$LOCAL_PATH")
     done
     echo "$LOCAL_PATH"
+}
+
+# Navigate to the project root directory. This function should be run from within the project directory
+function r() {
+    PROJECT_ROOT=$(find_project_root)
+    if [[ $PROJECT_ROOT == "/" ]]; then
+        echo -e "${RED}Project root not found${RESET_COLOUR}"
+    else
+        cd "$PROJECT_ROOT" || exit
+        echo -e "Project root: ${BLUE}$PROJECT_ROOT${RESET_COLOUR}"
+    fi
 }
 
 function ch() {
