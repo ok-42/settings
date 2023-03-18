@@ -47,14 +47,24 @@ alias jn='source $MY_SETTINGS_PATH/run_jupyter.sh'
 alias pi='pip install'
 alias pu='python -m pip install --upgrade pip'
 
+# Activate the virtual environment for the current project and update the shell prompt to include the project name.
+# This function first locates the project root directory, then checks for a virtual environment in that directory. If
+# a virtual environment is found, it is activated, and the shell prompt is updated to include the name of the current
+# project. Otherwise, an error message is displayed. This function should be run from within the project directory.
 function a() {
-    activate_venv
-    if [ -z "$VIRTUAL_ENV" ]; then
-        return
+    LOCAL_PATH=$(find_project_root)
+    RED='\e[31m'
+    BLUE='\e[1;34m'
+    RESET_COLOUR='\033[0m'
+    if [ -d "$LOCAL_PATH"/venv ]; then
+        echo -e "Virtual environment found in ${BLUE}$LOCAL_PATH${RESET_COLOUR}"
+        source_activate
+        PROJECT_PATH=$(dirname "$VIRTUAL_ENV")
+        PROJECT_NAME=$(basename "$PROJECT_PATH")
+        export PS1="\012\[$BLUE\]($PROJECT_NAME) $ORIG_PS1"
+    else
+        echo -e "${RED}Virtual environment not found${RESET_COLOUR}"
     fi
-    PROJECT_PATH=$(dirname "$VIRTUAL_ENV")
-    PROJECT_NAME=$(basename "$PROJECT_PATH")
-    export PS1="\012\[\e[1;34m\]($PROJECT_NAME) $ORIG_PS1"
 }
 alias da='deactivate'
 
@@ -75,21 +85,6 @@ function new() {
         mkdir "$1"
         cd "$1" || return
         bash -i "$MY_PROJECTS_PATH"/settings/setup_project.sh
-    fi
-}
-
-# Looks for venv directory in the current directory and goes up until venv is found or root reached
-# If the virtual environment found, activates it
-function activate_venv() {
-    LOCAL_PATH=$(pwd);
-    until [[ -d $LOCAL_PATH/venv || "$LOCAL_PATH" == "/" ]]; do
-        LOCAL_PATH=$(dirname "$LOCAL_PATH")
-    done
-    if [ -d "$LOCAL_PATH"/venv ]; then
-        echo Virual environment found in "$LOCAL_PATH"
-        source_activate
-    else
-        echo Virual environment not found
     fi
 }
 
