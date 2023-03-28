@@ -14,6 +14,7 @@ alias gl='git log -1'
 alias gp='git pull'
 alias gr='git reset --hard'
 alias gs='git status'
+alias gsn='git status --no-ahead-behind'
 alias cb='git rev-parse --abbrev-ref HEAD'
 alias rs='git remote show origin'
 
@@ -23,6 +24,9 @@ export MY_BASHRC_PATH="$MY_SETTINGS_PATH"/.bashrc
 
 alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
+
+# Recursive grep with coloured output and line numbers, excluding git and venv
+alias greps='grep -nr --color --exclude-dir={.git,.venv}'
 
 # https://stackoverflow.com/a/33469402
 alias path='echo "$PATH" | tr ":" "\n"'
