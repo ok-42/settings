@@ -94,6 +94,7 @@ function new() {
         mkdir "$1"
         cd "$1" || return
         bash -i "$MY_PROJECTS_PATH"/settings/setup_project.sh
+        pv && a && pp && pi wheel
     fi
 }
 
