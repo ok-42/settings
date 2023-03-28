@@ -44,8 +44,16 @@ else
 fi
 
 alias jn='source $MY_SETTINGS_PATH/run_jupyter.sh'
+
+# pip
+alias pf='pip freeze'
 alias pi='pip install'
-alias pu='python -m pip install --upgrade pip'
+alias pl='pip list'
+alias pu='pip uninstall'
+
+# Python modules
+alias pp='python -m pip install --upgrade pip'
+alias pv='python -m venv venv'
 
 RED='\e[31m'
 BLUE='\e[1;34m'
