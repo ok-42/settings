@@ -60,9 +60,10 @@ alias pu='pip uninstall'
 alias pp='python -m pip install --upgrade pip'
 alias pv='python -m venv venv'
 
-RED='\e[31m'
-BLUE='\e[1;34m'
-RESET_COLOUR='\033[0m'
+export RED='\e[31m'
+export GREEN='\e[32m'
+export BLUE='\e[1;34m'
+export RESET_COLOUR='\033[0m'
 
 # Activate the virtual environment for the current project and update the shell prompt to include the project name.
 # This function first locates the project root directory, then checks for a virtual environment in that directory. If
