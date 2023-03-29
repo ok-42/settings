@@ -16,7 +16,8 @@ alias gr='git reset --hard'
 alias gs='git status'
 alias gsn='git status --no-ahead-behind'
 alias cb='git rev-parse --abbrev-ref HEAD'
-alias rs='git remote show origin'
+alias rs='git config --get remote.origin.url'
+alias rss='git remote show origin'
 
 export MY_PROJECTS_PATH=~/projects
 export MY_SETTINGS_PATH="$MY_PROJECTS_PATH"/settings
@@ -137,7 +138,7 @@ function chh() {
 # Open the current repository's GitHub page in Chrome. Written by ChatGPT
 function gh() {
     local github_url
-    github_url="$(git config --get remote.origin.url)"
+    github_url="$(rs)"
     github_url="${github_url/git@github.com:/https://github.com/}"
     github_url="${github_url/.git/}"
     if [[ -n $github_url ]]; then
