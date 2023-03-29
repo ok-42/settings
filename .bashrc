@@ -134,6 +134,20 @@ function chh() {
   rm "$FILE_NAME"
 }
 
+# Open the current repository's GitHub page in Chrome. Written by ChatGPT
+function gh() {
+    local github_url
+    github_url="$(git config --get remote.origin.url)"
+    github_url="${github_url/git@github.com:/https://github.com/}"
+    github_url="${github_url/.git/}"
+    if [[ -n $github_url ]]; then
+        echo -e "Opening URL: ${BLUE}$github_url${RESET_COLOUR}"
+        start chrome "$github_url"
+    else
+        echo -e "${RED}URL not found${RESET_COLOUR}"
+    fi
+}
+
 # shellcheck disable=SC1090
 source ~/git-prompt.sh
 
