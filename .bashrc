@@ -65,6 +65,14 @@ export GREEN='\e[32m'
 export BLUE='\e[1;34m'
 export RESET_COLOUR='\033[0m'
 
+# Enable coloured output in PyLint. The tool uses built-in print function to output messages. The destination could
+# be sys.stdout or colorama.AnsiToWin32 depending on TERM env variable. With TERM=xterm (my default), the output
+# would be wrapped with colorama. On my Windows 10 / 11, it doesn't produce coloured output. I have to change TERM to
+# keep the standard output and make it work. These links are ColorizedTextReporter.out and its ancestor class' method
+# https://github.com/pylint-dev/pylint/blob/8776ba0808f807a8915d96c0901526d7c648ec34/pylint/reporters/text.py#L228
+# https://github.com/pylint-dev/pylint/blob/8776ba0808f807a8915d96c0901526d7c648ec34/pylint/reporters/base_reporter.py#L43
+export TERM=xterm-256color
+
 # Activate the virtual environment for the current project and update the shell prompt to include the project name.
 # This function first locates the project root directory, then checks for a virtual environment in that directory. If
 # a virtual environment is found, it is activated, and the shell prompt is updated to include the name of the current
