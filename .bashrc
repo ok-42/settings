@@ -100,6 +100,10 @@ function s() {
     cp $MY_BASHRC_PATH ~/.bashrc
 }
 
+function m() {
+    mkdir "$1" && cd "$1" || exit
+}
+
 function new() {
     if [[ -f $1 || -d $1 ]]; then
         echo Project "$1" already exists
