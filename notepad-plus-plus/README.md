@@ -4,6 +4,10 @@
 
 Copy `shortcuts.xml` to `%APPDATA%/Notepad++` folder (it could be `C:\Users\USERNAME\AppData\Roaming\Notepad++`).
 
+```bash
+cp shortcuts.xml $APPDATA/Notepad++/shortcuts.xml
+```
+
 ## Differences from the defaults
 
 | Shortcut                                            | Action       |
