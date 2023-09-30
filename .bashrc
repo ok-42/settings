@@ -27,7 +27,7 @@ alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
 
 # Recursive grep with coloured output and line numbers, excluding git and venv
-alias greps='grep -nr --color --exclude-dir={.git,.venv}'
+alias greps='grep -nr --color --exclude-dir={.git,venv,.ipynb_checkpoints}'
 
 # https://stackoverflow.com/a/33469402
 alias path='echo "$PATH" | tr ":" "\n"'
