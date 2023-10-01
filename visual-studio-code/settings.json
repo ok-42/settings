@@ -1,5 +1,8 @@
 {
     "editor.fontSize": 16,
     "window.zoomLevel": 1,
-    "terminal.integrated.defaultProfile.windows": "Git Bash"
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.fontFamily": "Ubuntu Mono",
+    "terminal.integrated.rightClickBehavior": "nothing"
 }
