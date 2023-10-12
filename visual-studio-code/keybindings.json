@@ -96,5 +96,13 @@
     {
         "key": "alt+3",
         "command": "workbench.view.search"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "editor.action.revealDeclaration"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]
