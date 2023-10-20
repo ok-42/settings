@@ -26,8 +26,8 @@ export MY_BASHRC_PATH="$MY_SETTINGS_PATH"/.bashrc
 alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
 
-# Recursive grep with coloured output and line numbers, excluding git and venv
-alias greps='grep -nr --color --exclude-dir={.git,venv,.ipynb_checkpoints}'
+# Recursive grep with coloured output and line numbers, excluding some folders
+alias greps='grep -nr --color --exclude-dir={.git,.idea,.ipynb_checkpoints,__pycache__,venv}'
 
 # https://stackoverflow.com/a/33469402
 alias path='echo "$PATH" | tr ":" "\n"'
