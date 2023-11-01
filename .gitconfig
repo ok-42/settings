@@ -7,3 +7,7 @@
 	tool = vimdiff
 [difftool]
         prompt = false
+# https://github.com/tandav/dotfiles/blob/404279bb/git/.gitconfig#L33
+[push]
+    autoSetupRemote = true
+	default = current
