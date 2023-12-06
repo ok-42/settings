@@ -35,7 +35,7 @@ function greps() {
 
     # Search for the text
     if ! [[ $1 =~ $REGEXP ]] ; then
-        grep -nr --color=always --exclude-dir={.git,.idea,.ipynb_checkpoints,__pycache__,venv} "$1" | nl > .grep_output
+        grep -nr --color=always --exclude-dir={.git,.idea,.ipynb_checkpoints,__pycache__,venv} --exclude=.grep_output\* "$1" | nl > .grep_output
         cat .grep_output
 
     # Read n-th line of the saved search results
