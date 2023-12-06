@@ -28,21 +28,19 @@ alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
 
 # Recursive grep with coloured output and line numbers, excluding some folders
-function greps() {
+function gre() {
 
     # https://stackoverflow.com/a/806923
     REGEXP='^[0-9]+$'
 
     # Search for the text
     if ! [[ $1 =~ $REGEXP ]] ; then
-        grep -nr --color=always --exclude-dir={.git,.idea,.ipynb_checkpoints,__pycache__,venv} --exclude=.grep_output\* "$1" | nl > .grep_output
-        cat .grep_output
+        grep -nr --color=always --exclude-dir={.git,.idea,.ipynb_checkpoints,__pycache__,venv} --exclude=.grep_output\* "$1" | nl | tee .grep_output
 
     # Read n-th line of the saved search results
     # and erase colours: https://stackoverflow.com/a/18000433
     else
-        sed "$1q;d" .grep_output | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" > .grep_output_n
-        awk '{print $2}' .grep_output_n | awk -F':' '{print $1 " -n" $2}' | xargs start notepad++
+        sed "$1q;d" .grep_output | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | awk '{print $2}' | awk -F':' '{print $1 " -n" $2}' | xargs start notepad++
     fi
 }
 
