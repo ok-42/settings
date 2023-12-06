@@ -1,4 +1,8 @@
 .idea/
 
+# See `greps` function in .bashrc
+/.grep_output
+/.grep_output_n
+
 # https://github.com/ok-42/pycharm-scp
 /pcscp.json
