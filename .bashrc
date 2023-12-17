@@ -157,7 +157,7 @@ function ch() {
 }
 
 function gw() {
-    git log --pretty=format:%s | tr ' ' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -r | head
+    git log --pretty=format:%s | tr ' ' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -r | awk -F' ' -v thr="$1" '{if ($1 >= thr) print $1 " " $2}'
 }
 
 function chh() {
