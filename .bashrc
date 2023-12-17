@@ -153,7 +153,7 @@ function r() {
 }
 
 function ch() {
-  git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
+    git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
 
 function gw() {
@@ -161,10 +161,10 @@ function gw() {
 }
 
 function chh() {
-  FILE_NAME=$(date +%s).txt
-  ch > "$FILE_NAME"
-  python "$MY_SETTINGS_PATH"/stats.py "$FILE_NAME"
-  rm "$FILE_NAME"
+    FILE_NAME=$(date +%s).txt
+    ch > "$FILE_NAME"
+    python "$MY_SETTINGS_PATH"/stats.py "$FILE_NAME"
+    rm "$FILE_NAME"
 }
 
 # Open the current repository's GitHub page in Chrome. Written by ChatGPT
@@ -193,5 +193,5 @@ PS1='\012'$ORIG_PS1
 
 # shellcheck disable=SC1090
 if [ -f ~/.git-completion.bash ];
-	then source ~/.git-completion.bash
+    then source ~/.git-completion.bash
 fi
