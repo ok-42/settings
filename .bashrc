@@ -156,6 +156,10 @@ function ch() {
   git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
 
+function gw() {
+    git log --pretty=format:%s | tr ' ' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -r | head
+}
+
 function chh() {
   FILE_NAME=$(date +%s).txt
   ch > "$FILE_NAME"
