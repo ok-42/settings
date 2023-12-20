@@ -51,6 +51,11 @@ alias path='echo "$PATH" | tr ":" "\n"'
 alias ccc='pygmentize -g -O style=colorful,linenos=1'
 alias cc='highlight --out-format=xterm256 --line-numbers'
 
+# Print a file without commented (#) and blank lines
+function noc() {
+    grep -v "^#" "$1" | grep -v "^\s*$"
+}
+
 if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
