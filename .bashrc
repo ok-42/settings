@@ -60,7 +60,7 @@ if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
     alias source_activate='source "$LOCAL_PATH"/venv/bin/activate'
-    alias t="tree -I 'venv|__pycache__'"
+    alias t="tree -C -I 'venv|__pycache__'"
 else
     alias python='winpty python.exe'
     alias open='explorer .'
