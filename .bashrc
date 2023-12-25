@@ -68,6 +68,8 @@ then
     function db() {
         docker exec -it "$1" bash
     }
+    # https://superuser.com/a/448294
+    export LC_ALL="C"
 else
     alias python='winpty python.exe'
     alias open='explorer .'
