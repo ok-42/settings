@@ -63,6 +63,11 @@ then
     alias python='python3'
     alias source_activate='source "$LOCAL_PATH"/venv/bin/activate'
     alias t="tree -C -I 'venv|__pycache__' --dirsfirst"
+    alias dps="docker ps"
+    alias dpsa="docker ps -a"
+    function db() {
+        docker exec -it "$1" bash
+    }
 else
     alias python='winpty python.exe'
     alias open='explorer .'
