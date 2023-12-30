@@ -166,6 +166,31 @@ function r() {
     fi
 }
 
+# Activate aliases from a file
+function e() {
+    PROJECT_ROOT=$(find_project_root)
+    export ALIAS="$PROJECT_ROOT"/aliases.sh
+    if [ -f "$ALIAS" ]; then
+        echo -e "Aliases found in ${BLUE}$PROJECT_ROOT${RESET_COLOUR}:"
+        head -5 "$ALIAS"
+        # shellcheck disable=SC1090
+        source "$ALIAS"
+        PROJECT_NAME=$(basename "$PROJECT_ROOT")
+        export PS1="\012\[$GREEN\][$PROJECT_NAME] $ORIG_PS1"
+    else
+        echo -e "${RED}Aliases not found${RESET_COLOUR}"
+    fi
+}
+
+# Deactivate aliases
+function de() {
+    while read -r line; do
+        temp=$(echo "$line" | awk '{print $2}' | awk -F'=' '{print $1}')
+        unalias "$temp"
+    done < "$ALIAS"
+    export PS1="\012$ORIG_PS1"
+}
+
 function ch() {
     git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
