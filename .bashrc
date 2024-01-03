@@ -193,6 +193,11 @@ function de() {
     export PS1="\012$ORIG_PS1"
 }
 
+function len() {
+    myvar="$1"
+    echo ${#myvar}
+}
+
 function ch() {
     git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
