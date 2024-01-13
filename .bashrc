@@ -28,6 +28,7 @@ export MY_BASHRC_PATH="$MY_SETTINGS_PATH"/.bashrc
 
 alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
+alias diffc='diff --color'
 
 # Recursive grep with coloured output and line numbers, excluding some folders
 function gre() {
@@ -120,10 +121,11 @@ function a() {
 }
 alias da='deactivate'
 
-alias vb='note $MY_BASHRC_PATH'
-alias va='note ~/.bash_aliases'
-alias v='vim $MY_BASHRC_PATH'
-alias c='cat $MY_BASHRC_PATH'
+# b - bashrc, ba - bash aliases; n - note, v - vim
+alias bn='note $MY_BASHRC_PATH'
+alias bv='vim $MY_BASHRC_PATH'
+alias ban='note ~/.bash_aliases'
+alias bav='vim ~/.bash_aliases'
 
 function s() {
     # shellcheck disable=SC1090
