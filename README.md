@@ -13,10 +13,22 @@ bash setup.sh
 ```
 
 
-## Usage
+## Functions
 
-Create an empty project and virtual environment:
-
-```bash
-new project_name
-```
+| Name  | Params               | Action                                          | Project-level only |
+|-------|----------------------|-------------------------------------------------|--------------------|
+| `gre` | Search term / Number | Search with grep / Open the n-th search result  |                    |
+| `noc` | File name            | Print file without `#`-comments and blank lines |                    |
+| `db`  | Container name       | Start bash in the Docker container              |                    |
+| `a`   |                      | Activate Python venv and add its name to `PS1`  | +                  |
+| `s`   |                      | `source .bashrc` and copy to `~/`               |                    |
+| `m`   | New directory name   | `mkdir` and `cd`                                |                    |
+| `new` | New project name     | Setup a template for a Python project           | `~/projects`       |
+| `r`   |                      | Navigate to the project root                    | +                  |
+| `e`   |                      | `source` aliases in the project root            | +                  |
+| `de`  |                      | `unalias` aliases from `e` func                 |                    |
+| `len` | String               | Print length of the string                      |                    |
+| `ch`  |                      | Print commits count by hours (0 &ndash; 23)     | +                  |
+| `gw`  | [Number]             | Print most used commit message words            | +                  |
+| `chh` |                      | Visualise `ch` output                           | +                  |
+| `gh`  |                      | Open the project on GitHub                      | +                  |
