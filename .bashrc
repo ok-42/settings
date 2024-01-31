@@ -29,6 +29,7 @@ export MY_BASHRC_PATH="$MY_SETTINGS_PATH"/.bashrc
 alias p='cd $MY_PROJECTS_PATH'
 alias cls='clear'
 alias diffc='diff --color'
+alias gi='cp $MY_SETTINGS_PATH/project/.gitignore .'
 
 # Recursive grep with coloured output and line numbers, excluding some folders
 function gre() {
