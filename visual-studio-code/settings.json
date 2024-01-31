@@ -1,11 +1,21 @@
 {
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.codeActionsOnSave": {},
+    "editor.emptySelectionClipboard": false,
     "editor.fontSize": 16,
+    "editor.minimap.enabled": false,
     "editor.scrollBeyondLastLine": false,
+    "explorer.autoReveal": "focusNoScroll",
+    "extensions.ignoreRecommendations": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "telemetry.telemetryLevel": "crash",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.fontFamily": "Ubuntu Mono",
     "terminal.integrated.fontSize": 18,
     "terminal.integrated.rightClickBehavior": "nothing",
+    "window.menuBarVisibility": "visible",
     "window.zoomLevel": 1,
     "workbench.tree.indent": 18
 }
