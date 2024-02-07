@@ -115,7 +115,11 @@ function a() {
         source_activate
         PROJECT_PATH=$(dirname "$VIRTUAL_ENV")
         PROJECT_NAME=$(basename "$PROJECT_PATH")
-        export PS1="\012\[$BLUE\]($PROJECT_NAME) $ORIG_PS1"
+        if [ "$PS1_SHOW_GIT" = "true" ]; then
+            export PS1="\012\[$BLUE\]($PROJECT_NAME) $ORIG_PS1"
+        else
+            export PS1="\012\[$BLUE\]($PROJECT_NAME) $PS1NOGIT"
+        fi
     else
         echo -e "${RED}Virtual environment not found${RESET_COLOUR}"
     fi
@@ -235,7 +239,19 @@ source ~/git-prompt.sh
 
 # shellcheck disable=SC2016
 ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '
+PS1NOGIT='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] *\[\e[m\]\012$ '
 PS1='\012'$ORIG_PS1
+PS1_SHOW_GIT="true"
+
+function q() {
+    if [ "$PS1_SHOW_GIT" = "true" ]; then
+        export PS1='\012'$PS1NOGIT
+        PS1_SHOW_GIT="false"
+    else
+        export PS1='\012'$ORIG_PS1
+        PS1_SHOW_GIT="true"
+    fi
+}
 
 # shellcheck disable=SC1090
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
