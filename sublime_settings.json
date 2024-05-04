@@ -1,0 +1,6 @@
+[
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+	{ "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+	{ "keys": ["alt+q"], "command": "focus_side_bar"},
+	{ "keys": ["alt+1"], "command": "toggle_side_bar"}
+]
