@@ -205,6 +205,8 @@ function len() {
     echo ${#myvar}
 }
 
+alias ts="date '+%s'"
+
 function ch() {
     git log --format=format:'%ci' | awk -F' ' '{print $2}' | awk -F':' '{print $1}' | sort | uniq -c | awk -F' ' '{print $2 " " $1}' | column -c 5 -t -R 2
 }
