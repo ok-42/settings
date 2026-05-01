@@ -32,3 +32,12 @@ bash setup.sh
 | `gw`  | [Number]             | Print most used commit message words            | +                  |
 | `chh` |                      | Visualise `ch` output                           | +                  |
 | `gh`  |                      | Open the project on GitHub                      | +                  |
+
+
+## Browser [search engines](chrome://settings/searchEngines)
+
+| Name                     | URL                                                                     |
+|--------------------------|-------------------------------------------------------------------------|
+| pandas DataFrame methods | `https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.%s.html` |
+| numpy functions          | `https://numpy.org/doc/stable/reference/generated/numpy.%s.html`        |
+| PyPI packages            | `https://pypi.org/project/%s`                                           |
