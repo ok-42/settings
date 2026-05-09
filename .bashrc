@@ -48,6 +48,34 @@ function gre() {
     fi
 }
 
+# Clone a GitHub repo
+function clone() {
+    if [ -z "$1" ]; then
+        echo "Usage: clone git@github.com:user/repo.git"
+        return 1
+    fi
+    local github_url="$1"
+    local user_repo=""
+
+    # Format: https://github.com/user/repo.git or git@github.com:user/repo.git
+    if [[ "$github_url" =~ github\.com[/:](.*)/(.*)\.git$ ]]; then
+        user="${BASH_REMATCH[1]}"
+        repo="${BASH_REMATCH[2]}"
+    # Format: https://github.com/user/repo or git@github.com:user/repo
+    elif [[ "$github_url" =~ github\.com[/:](.*)/(.*)[^\.git]$ ]]; then
+        user="${BASH_REMATCH[1]}"
+        repo="${BASH_REMATCH[2]}"
+    else
+        echo "Invalid GitHub URL format"
+        return 1
+    fi
+
+    cd ~/github
+    mkdir -p "$user/$repo"
+    git clone "$github_url" "$user/$repo"
+    echo "Repository cloned to $user/$repo"
+}
+
 # https://stackoverflow.com/a/33469402
 alias path='echo "$PATH" | tr ":" "\n"'
 
