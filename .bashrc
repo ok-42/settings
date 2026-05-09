@@ -1,4 +1,6 @@
-alias ll='ls -al --color --group-directories-first'
+# alias ll='ls -alh --color --group-directories-first'
+alias ll='eza -alh --group-directories-first'
+export EZA_COLORS="uu=0:gu=0:da=0"
 
 alias ga='git add'
 alias gb='git branch'
