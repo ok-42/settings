@@ -132,25 +132,24 @@ export RESET_COLOUR='\033[0m'
 # https://github.com/pylint-dev/pylint/blob/8776ba0808f807a8915d96c0901526d7c648ec34/pylint/reporters/base_reporter.py#L43
 export TERM=xterm-256color
 
-# Activate the virtual environment for the current project and update the shell prompt to include the project name.
-# This function first locates the project root directory, then checks for a virtual environment in that directory. If
-# a virtual environment is found, it is activated, and the shell prompt is updated to include the name of the current
-# project. Otherwise, an error message is displayed. This function should be run from within the project directory.
+# Activates a virtual environment located in the current directory or any of its parent directories.
+# This function searches for a directory named 'venv' in the current directory and its parent directories.
+# If found, it activates the virtual environment and updates the shell's prompt to indicate the virtual environment's name.
 function a() {
-    LOCAL_PATH=$(find_project_root)
-    if [ -d "$LOCAL_PATH"/venv ]; then
-        echo -e "Virtual environment found in ${BLUE}$LOCAL_PATH${RESET_COLOUR}"
-        source_activate
-        PROJECT_PATH=$(dirname "$VIRTUAL_ENV")
-        PROJECT_NAME=$(basename "$PROJECT_PATH")
-        if [ "$PS1_SHOW_GIT" = "true" ]; then
-            export PS1="\012\[$BLUE\]($PROJECT_NAME) $ORIG_PS1"
-        else
-            export PS1="\012\[$BLUE\]($PROJECT_NAME) $PS1NOGIT"
+    local dir="$PWD"
+    local current_name
+    while [[ "$dir" != "/" ]]; do
+        if [[ -d "$dir/venv" ]]; then
+            current_name="$(basename "$PWD")"
+            echo -e "Virtual environment found in ${BLUE}$dir${RESET_COLOUR}"
+            source "$dir/venv/bin/activate"
+            export PS1="\012\[$BLUE\]($current_name) $ORIG_PS1"
+            return 0
         fi
-    else
-        echo -e "${RED}Virtual environment not found${RESET_COLOUR}"
-    fi
+        dir="$(dirname "$dir")"
+    done
+    echo -e "${RED}Virtual environment not found${RESET_COLOUR}"
+    return 1
 }
 alias da='deactivate'
 
