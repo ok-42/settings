@@ -259,7 +259,7 @@ function gh() {
     github_url="${github_url/.git/}"
     if [[ -n $github_url ]]; then
         echo -e "Opening URL: ${BLUE}$github_url${RESET_COLOUR}"
-        start chrome "$github_url"
+        xdg-open chrome "$github_url"
     else
         echo -e "${RED}URL not found${RESET_COLOUR}"
     fi
