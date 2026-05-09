@@ -284,6 +284,8 @@ function q() {
     fi
 }
 
+eval "$(fzf --bash)"
+
 # shellcheck disable=SC1090
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
