@@ -297,3 +297,16 @@ eval "$(fzf --bash)"
 if [ -f ~/.git-completion.bash ];
     then source ~/.git-completion.bash
 fi
+
+paths=(
+    "/usr/local/go/bin"
+    "$HOME/.local/bin"
+    "$HOME/sdk/flutter/bin"
+    "$HOME/github/ggml-org/llama.cpp/build/bin"
+)
+
+for dir in "${paths[@]}"; do
+    if [ -d "$dir" ]; then
+        export PATH="$PATH:$dir"
+    fi
+done
