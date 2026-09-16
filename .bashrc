@@ -78,6 +78,7 @@ function clone() {
     cd ~/github
     mkdir -p "$user/$repo"
     git clone "$github_url" "$user/$repo"
+    cd "$user/$repo"
     echo "Repository cloned to $user/$repo"
 }
 
