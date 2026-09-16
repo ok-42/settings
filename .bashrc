@@ -2,6 +2,9 @@
 alias ll='eza -alh --group-directories-first'
 export EZA_COLORS="uu=0:gu=0:da=0"
 
+# Ignore git and venv folders in ~/.config/fd/ignore
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
+
 alias ga='git add'
 alias gb='git branch'
 alias gbl='git branch --list'
