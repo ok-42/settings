@@ -94,9 +94,12 @@ function noc() {
     grep -v "^#" "$1" | grep -v "^\s*$"
 }
 
+alias ai='llama-server --models-dir ~/Models/ --tools all -lv 0'
+
 if [ "$(uname -s)" == "Linux" ];
 then
     alias python='python3'
+    alias text='gnome-text-editor'
     alias source_activate='source "$LOCAL_PATH"/venv/bin/activate'
     alias t="tree -AC -I 'venv|__pycache__' --dirsfirst"
     alias dps="docker ps"
