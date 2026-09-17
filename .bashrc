@@ -275,7 +275,7 @@ function gh() {
 }
 
 # shellcheck disable=SC1090
-source ~/git-prompt.sh
+[[ -f "$MY_SETTINGS_PATH/git-prompt.sh" ]] && source "$MY_SETTINGS_PATH/git-prompt.sh"
 
 # shellcheck disable=SC2016
 ORIG_PS1='\[\e[0;35m\]\t \[\e[0;32m\]\u@\h \[\e[0;33m\]\w\[\e[0;36m\] $(__git_ps1 "(%s)")\[\e[m\]\012$ '

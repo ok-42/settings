@@ -6,3 +6,4 @@ mkdir $OLD_FILES_PATH
 [ ! -f ~/.gitconfig ] || mv ~/.gitconfig $OLD_FILES_PATH
 cp .bashrc .gitconfig ~
 source .bashrc
+mv git-prompt.sh "$MY_SETTINGS_PATH/git-prompt.sh"
