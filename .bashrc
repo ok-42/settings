@@ -124,6 +124,8 @@ then
     }
     # https://superuser.com/a/448294
     export LC_ALL="C"
+    alias ram='sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches'
+    alias b='text ~/.bashrc &'
 else
     alias python='winpty python.exe'
     alias open='explorer .'
