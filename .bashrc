@@ -64,6 +64,11 @@ function clone() {
     local github_url="$1"
     local user_repo=""
 
+    local shallow=false
+    if [ "$2" = "-s" ] || [ "$2" = "--shallow" ]; then
+        shallow=true
+    fi
+
     # Format: https://github.com/user/repo.git or git@github.com:user/repo.git
     if [[ "$github_url" =~ github\.com[/:](.*)/(.*)\.git$ ]]; then
         user="${BASH_REMATCH[1]}"
@@ -79,7 +84,15 @@ function clone() {
 
     cd ~/github
     mkdir -p "$user/$repo"
-    git clone "$github_url" "$user/$repo"
+
+    if [ "$shallow" = true ]; then
+        echo "Performing a shallow clone..."
+        git clone --depth 1 "$github_url" "$user/$repo"
+    else
+        echo "Performing a full clone..."
+        git clone "$github_url" "$user/$repo"
+    fi
+
     cd "$user/$repo"
     echo "Repository cloned to $user/$repo"
 }
