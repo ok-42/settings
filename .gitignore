@@ -1,5 +1,7 @@
 .idea/
 
+git-prompt.sh
+
 # See `gre` function in .bashrc
 /.grep_output
 
