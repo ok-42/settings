@@ -309,12 +309,8 @@ function q() {
 eval "$(fzf --bash)"
 
 # shellcheck disable=SC1090
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
-# shellcheck disable=SC1090
-if [ -f ~/.git-completion.bash ];
-    then source ~/.git-completion.bash
-fi
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 paths=(
     "/usr/local/go/bin"
